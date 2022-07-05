@@ -5,6 +5,8 @@ import axios from "axios";
 const Main = () => {
   const [search, setSearch] = useState("");
   const [bookData, setData] = useState([]);
+  // const [currentPage, setCurrenpPage] = useState(1);
+  // const [fetching, setFetching] = useState(true);
   const searchBook = (evt) => {
     if (evt.key === "Enter") {
       axios
@@ -14,9 +16,41 @@ const Main = () => {
             "&key=AIzaSyCIldoFxQfUbes_WEP_wRNWQKKkHydd9qg" +
             "&maxResults=40"
         )
+
         .then((res) => setData(res.data.items))
         .catch((err) => console.log(err));
     }
+    //     if (fetching) {
+    //       axios
+    //         .get(
+    //           "https://www.googleapis.com/books/v1/volumes?q=" +
+    //             search +
+    //             "&key=AIzaSyCIldoFxQfUbes_WEP_wRNWQKKkHydd9qg" +
+    //             `&maxResults=40`
+    //         )
+    //         .then((respons) => {
+    //           setData([...bookData, ...respons.data]);
+    //           setCurrenpPage((prevState) => prevState + 1);
+    //         })
+    //         .finally(() => setFetching(false));
+    //     }
+    //   },
+    //   [fetching]);
+    // useEffect(() => {
+    //   document.addEventListener("scroll", scrollHandler);
+    //   return function () {
+    //     document.removeEventListener("scroll", scrollHandler);
+    //   };
+    // }, []);
+    // const scrollHandler = (e) => {
+    //   if (
+    //     e.target.documentElement.scrollHeight -
+    //       (e.target.documentElement.scrollTop + window.innerHeight) <
+    //     100
+    //   ) {
+    //     setFetching(true);
+    //   }
+    // };
   };
   return (
     <>
@@ -24,7 +58,7 @@ const Main = () => {
         <div className="row1">
           <h1>
             Книжная библиотека
-            <br /> для тела и души.
+            <br /> для души.
           </h1>
         </div>
         <div className="row2">
